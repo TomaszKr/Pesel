@@ -1,6 +1,11 @@
 {
-    "name": "walidacje/validation",
+    "name": "TomaszKr/pesel",
     "description": "Sprawdzenie poprawnosci PESEL",
+    "keywords": [
+        "pesel",
+        "validation",
+        "php"
+    ],
     "license": "MIT",
     "authors": [
         {
