@@ -1,6 +1,7 @@
 # Validation Pesel
 Check it is correct number Pesel
 
+[![Build Status](https://travis-ci.org/TomaszKr/Pesel.svg?branch=master)](https://travis-ci.org/TomaszKr/Pesel)
 
 ## Getting Started
 
@@ -24,7 +25,6 @@ composer install tomasz-kr/pesel
 
 ```
 phpunit --configuration phpunit.xml 
-
 ```
 
 ## Overview
