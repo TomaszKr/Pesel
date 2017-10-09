@@ -1,6 +1,6 @@
 {
     "name": "tomasz-kr/pesel",
-    "description": "Sprawdzenie poprawnosci PESEL",
+    "description": "Walidacja numeru PESEL",
     "keywords": [
         "pesel",
         "validation",

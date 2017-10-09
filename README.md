@@ -17,7 +17,7 @@ PHP >= 7.1
 Go to your project directory where the ``composer.json`` file is located and type:
 
 ```
-composer install tomaszkr/pesel
+composer install tomasz-kr/pesel
 ```
 
 ## Running the tests
