@@ -23,7 +23,8 @@ composer install tomasz-kr/pesel
 ## Running the tests
 
 ```
-./vendor/bin/phpunit  --bootstrap vendor/autoload.php tests
+phpunit --configuration phpunit.xml 
+
 ```
 
 ## Overview
