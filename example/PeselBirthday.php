@@ -1,7 +1,7 @@
 <?php
 require __DIR__.'/../vendor/autoload.php';
 
-use Validation\Pesel as Pesel;
+use Object\Pesel as Pesel;
 
 $pesel = new Pesel("07241619910");
 

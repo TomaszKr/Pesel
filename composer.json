@@ -1,6 +1,10 @@
 {
     "name": "tomasz-kr/pesel",
-    "description": "Walidacja numeru PESEL",
+    "description": "Obiekt PESEL, możliwość: 
+      walidacji, 
+      ustawienie zakresu roku poprawnych peseli, 
+      wyciągnięcia danych jakie znajdują się m.in data urodzenia, 
+      płeć",
     "keywords": [
         "pesel",
         "validation",
@@ -18,12 +22,12 @@
     },
 
     "require-dev": {
-        "phpunit/phpunit": "~6.1"
+      "phpunit/phpunit": "6.4.1"
     },
     
     "autoload": {
         "psr-4": {
-            "Validation\\": "validation/"
+            "Object\\": "object/"
         }
     },
     "autoload-dev": {

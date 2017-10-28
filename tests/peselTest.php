@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Validation\Pesel as Pesel;
+use Object\Pesel as Pesel;
 use PHPUnit\Framework\TestCase;
 
 /*
@@ -71,7 +71,23 @@ class PeselTest extends TestCase
             $this->assertEquals($woman,$pesel->whatGender());
         }
         
-        
+    }
+
+    /**
+     * @dataProvider futerPesel
+     * @param string $number
+     */
+    public function testMinAndMaxYear($number){
+        $pesel = new Pesel($number);
+
+        $min = new \DateTime('1900-01-01');
+        $max = new \DateTime('2020-01-01');
+
+        $pesel
+        ->setMinYear($min)
+        ->setMaxYear($max);
+
+        $this->assertFalse($pesel->isCorrectYear());
     }
     
     public function invalidNumberDataProvider()
@@ -104,7 +120,6 @@ class PeselTest extends TestCase
         return [
             ["04722615764"],
             ["85501212017"],
-            ['17321211228'],
             ["92492415635"],
             ["04722615764"]
         ];

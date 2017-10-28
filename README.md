@@ -1,11 +1,12 @@
-# Validation Pesel
-Check it is correct number Pesel
+# Pesel
+Object Pesel
+PESEL mean Personal Identificator for Poland
 
 [![Build Status](https://travis-ci.org/TomaszKr/Pesel.svg?branch=master)](https://travis-ci.org/TomaszKr/Pesel)
 
 ## Getting Started
 
-Used this validation for everytime when your project has number PESEL and you must valiadtion it.
+Used this object for everytime when your project has number PESEL and you must valiadtion it.
 
 ### Required
 
@@ -35,34 +36,37 @@ $pesel = new PESEL("NUMBER");
 ```
 
 Now, you can take information about:
+
 * Correct format
 ```
-$pesel->isCorrectLenght();
+$pesel->isCorrectLenght(); //boolean
 ```
-* Correct only number
 
+* Correct only number
 ```
-$pesel->isCorrectNumber();
+$pesel->isCorrectNumber(); //boolean
 ```
+
 * Correct for number controls
 ```
-$pesel->valid();
+$pesel->valid(); //boolean
 ```
-* Correct for exist in this day
 
+* Correct for exist in this day
 ```
 $pesel->isCorrectDateNow();
 ```
+
 * Correct for all condition 
+```
+$pesel->isCorrect(); //boolean
+```
 
-```
-$pesel->isCorrect();
-```
 * Birthday
-
 ```
 $pesel->getBirthday()->format("Y-m-d");
 ```
+
 * Gender
 ```
 $pesel->setTextForMan("Man");
@@ -70,6 +74,28 @@ $pesel->setTextForWoman("Woman");
 $pesel->whatGender(); //return man or woman
 ```
 
+* Correct year between 2 years (min and max)
+```
+$pesel->isCorrectYear(); //boolean
+```
+Default:
+> Min has 1st January 1800 
+
+> Max has this days 
+
+* Set max year
+```
+$pesel->setManYear(\DateTime $dateTime);
+```
+
+* Set min year 
+```
+$pesel->setMinYear(\DateTime $dateTime);
+```
+
+## Author
+[Tomasz Król](http://tomaszkrol.eu)
+
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details
