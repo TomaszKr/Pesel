@@ -1,10 +1,6 @@
 {
     "name": "tomasz-kr/pesel",
-    "description": "Obiekt PESEL, możliwość: 
-      walidacji, 
-      ustawienie zakresu roku poprawnych peseli, 
-      wyciągnięcia danych jakie znajdują się m.in data urodzenia, 
-      płeć",
+    "description": "Obiekt PESEL, możliwość: walidacji, ustawienie zakresu roku poprawnych peseli, wyciągnięcia danych jakie znajdują się m.in data urodzenia, płeć",
     "keywords": [
         "pesel",
         "validation",
