@@ -81,7 +81,7 @@ class PeselTest extends TestCase
         $pesel = new Pesel($number);
 
         $min = new \DateTime('1900-01-01');
-        $max = new \DateTime('2020-01-01');
+        $max = new \DateTime('2020-12-31');
 
         $pesel
         ->setMinYear($min)
@@ -112,7 +112,10 @@ class PeselTest extends TestCase
             ["97080303491"],
             ["51040616540"],
             ["50880919415"],
-            ["00921116660"]
+            ["00921116660"],
+            ["00280116406"],
+            ["00851409494"],
+            ["00012407325"]
         ];
     }
     
@@ -121,7 +124,8 @@ class PeselTest extends TestCase
             ["04722615764"],
             ["85501212017"],
             ["92492415635"],
-            ["04722615764"]
+            ["04722615764"],
+            ["00631107455"]
         ];
     }
 }

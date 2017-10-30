@@ -26,6 +26,17 @@ class Pesel
     CONST WOMAN = 0;
     
     /**
+    * All years that maybe it used
+    */
+    CONST YEAR = [
+                  '1900',
+                  '2000',
+                  '2100',
+                  '2200',
+                  '1800'
+                ];
+    
+    /**
      * Text for gender MAN
      *
      * @var string
@@ -154,12 +165,7 @@ class Pesel
      */
     private function getMonth() : string
     {    
-        $isPass = $this->number[2] % 2 == 0;
-        if($isPass){
-            return "0".$this->number[3];
-        }else{
-            return "1".$this->number[3];
-        }
+        return ($this->number[2] % 2).$this->number[3];
     }
     
     /**
@@ -169,31 +175,7 @@ class Pesel
      */
     private function getYear() : string
     {
-        $year = 0000;
-        switch($this->number[2]){
-            case 0:
-            case 1:
-                $year = 1900;
-                break;
-            case 2:
-            case 3:
-                $year = 2000;
-                break;    
-            case 4:
-            case 5:
-                $year = 2100;
-                break;
-            case 6:
-            case 7:
-                $year = 2200;
-                break;
-            case 8:
-            case 9:
-                $year = 1800;
-                break;
-        }
-        
-        return $year + ($this->number[0].$this->number[1]);
+        return self::YEAR[floor($this->number[2]/2)] + ($this->number[0].$this->number[1]);
     }
     
     /**
