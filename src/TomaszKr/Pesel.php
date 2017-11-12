@@ -1,34 +1,37 @@
 <?php
 
-namespace Object;
+namespace TomaszKr;
 
 /**
  * PESEL
  * 
  * @author Tomasz Król <tomasz46@gmail.com>
  */
-class Pesel
+final class Pesel
 {
     /**
      * Max lenght in PESEL
+     * @var integer 
      */
-    CONST MAX_LENGHT = 11; 
+    const MAX_LENGHT = 11; 
     
     /**
      * WEIGHT for position in PESEL
+     * @var array
      */
-    CONST WEIGHTS = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3, 1];
+    const WEIGHTS = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3, 1];
     
     /**
      * Return points for set gender
      */
-    CONST MAN = 1;
-    CONST WOMAN = 0;
+    const MAN = 1;
+    const WOMAN = 0;
     
     /**
     * All years that maybe it used
+    * @var array
     */
-    CONST YEAR = [
+    const YEAR = [
                   '1900',
                   '2000',
                   '2100',
@@ -74,13 +77,22 @@ class Pesel
     /**
      * Constructor
      * 
-     * @param string $number        Number "Pesel"
+     * @param string $number Number "Pesel"
      */
-    public function __construct(string $number){
+    public function __construct(string $number)
+    {
         $this->number = $number;
 
         $this->minYear = new \DateTime('1800-01-01');
         $this->maxYear = new \DateTime();
+        
+        if(!$this->isCorrectLenght()){
+          throw new \Exception("Incorrect lenght", 1);
+        }
+        
+        if(!$this->isCorrectNumber() ){
+          throw new \Exception("Must be only number", 1);
+        }
     }
     
     /**
@@ -94,9 +106,7 @@ class Pesel
      */
     public function isCorrect() : bool
     {
-        return $this->isCorrectLenght() 
-                && $this->isCorrectNumber() 
-                ? $this->valid() : false;
+        return $this->valid();
     }
     
     /**
@@ -104,7 +114,7 @@ class Pesel
      *
      * @return bool
      */
-    public function valid() : bool
+    private function valid() : bool
     {
         $sum = 0;
            foreach(self::WEIGHTS as $key=>$val){
@@ -176,19 +186,6 @@ class Pesel
     private function getYear() : string
     {
         return self::YEAR[floor($this->number[2]/2)] + ($this->number[0].$this->number[1]);
-    }
-    
-    /**
-     * Set number "Pesel"
-     *
-     * @param string $number
-     * @return Pesel
-     */
-    public function setNumber(string $number) : Pesel
-    {
-        $this->number = $number;
-        
-        return $this;
     }
     
     /**

@@ -23,7 +23,7 @@
     
     "autoload": {
         "psr-4": {
-            "Object\\": "object/"
+            "TomaszKr\\": "src/TomaszKr/"
         }
     },
     "autoload-dev": {

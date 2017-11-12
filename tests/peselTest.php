@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Object\Pesel as Pesel;
+use TomaszKr\Pesel as Pesel;
 use PHPUnit\Framework\TestCase;
 
 /*
@@ -11,10 +11,19 @@ use PHPUnit\Framework\TestCase;
 class PeselTest extends TestCase
 {
     /**
+     * @dataProvider invalidNumberDataProviderException
+     * @param string $number
+     * @expectedException Exception
+     */
+    public function testException($number) : void
+    {
+        $pesel = new Pesel($number);
+    }
+    /**
      * @dataProvider invalidNumberDataProvider
      * @param string $number
      */
-    public function testIsValidReturnsFalseWhenNumberIsInvalid($number)
+    public function testIsValidReturnsFalseWhenNumberIsInvalid($number) : void
     {
         $pesel = new Pesel($number);
         $this->assertFalse($pesel->isCorrect());
@@ -24,14 +33,12 @@ class PeselTest extends TestCase
      * @dataProvider correctPesel
      * @param string $number
      */
-    public function testIsValidReturnsTrueWhenNumberIsCorrect($number)
+    public function testIsValidReturnsTrueWhenNumberIsCorrect($number) : void
     {
         $pesel = new Pesel($number);
         
         $getPesel = $pesel->getNumber();
         $this->assertTrue($pesel->isCorrect());
-        
-        $pesel->setNumber($number);
         
         $this->assertEquals($getPesel,$pesel->getNumber());
         
@@ -42,7 +49,7 @@ class PeselTest extends TestCase
      * @dataProvider futerPesel()
      * @param string $number
      */
-    public function testIsValidReturnsFalseWhenNumberIsInFutere($number)
+    public function testIsValidReturnsFalseWhenNumberIsInFutere($number) : void
     {
         $pesel = new Pesel($number);
         $this->assertFalse($pesel->isCorrectDateNow());
@@ -52,7 +59,8 @@ class PeselTest extends TestCase
      * @dataProvider correctPesel
      * @param string $number
      */
-    public function testGender($number){
+    public function testGender($number) : void
+    {
         $pesel = new Pesel($number);
         
         $man = "man";
@@ -77,11 +85,12 @@ class PeselTest extends TestCase
      * @dataProvider futerPesel
      * @param string $number
      */
-    public function testMinAndMaxYear($number){
+    public function testMinAndMaxYear($number) : void
+    {
         $pesel = new Pesel($number);
 
         $min = new \DateTime('1900-01-01');
-        $max = new \DateTime('2020-12-31');
+        $max = new \DateTime('2030-12-31');
 
         $pesel
         ->setMinYear($min)
@@ -90,22 +99,29 @@ class PeselTest extends TestCase
         $this->assertFalse($pesel->isCorrectYear());
     }
     
-    public function invalidNumberDataProvider()
+    public function invalidNumberDataProviderException() : array
     {
         return [
             [1234],
             ['1234'],
             ['aaaa'],
-            ['11111111111'],
             ['aaaaaaaaaaa'],
-            ['96100612532'],
-            ['61122500187'],
-            ['78091501150'],
-            ['00000000000'],
+            
         ];
     }
+    public function invalidNumberDataProvider() : array
+    {
+      return [
+        ['96100612532'],
+        ['61122500187'],
+        ['78091501150'],
+        ['00000000000'],
+        ['11111111111'],
+    ];
+  }
     
-    public function correctPesel(){
+    public function correctPesel() : array
+    {
         return [
             ["07241619910"],
             ["92062315954"],
@@ -119,7 +135,8 @@ class PeselTest extends TestCase
         ];
     }
     
-    public function futerPesel(){
+    public function futerPesel() : array
+    {
         return [
             ["04722615764"],
             ["85501212017"],

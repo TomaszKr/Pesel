@@ -1,7 +1,7 @@
 <?php
 require __DIR__.'/../vendor/autoload.php';
 
-use Object\Pesel as Pesel;
+use TomaszKr\Pesel as Pesel;
 
 $pesel = new Pesel("07241619910");
 
