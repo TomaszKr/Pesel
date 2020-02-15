@@ -6,7 +6,7 @@ PESEL mean Personal Identificator for Poland
 
 ## Getting Started
 
-Used this object for everytime when your project has number PESEL and you must valiadtion it.
+Used this object for every time when your project has number PESEL and you must validation it.
 
 ### Required
 
@@ -98,4 +98,4 @@ $pesel->setMinYear(\DateTime $dateTime);
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details
+This project is licensed under the MIT Licence - see the [LICENSE](LICENSE.md) file for details
