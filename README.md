@@ -85,7 +85,7 @@ Default:
 
 * Set max year
 ```
-$pesel->setManYear(\DateTime $dateTime);
+$pesel->setMaxYear(\DateTime $dateTime);
 ```
 
 * Set min year 
