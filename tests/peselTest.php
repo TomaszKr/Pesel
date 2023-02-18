@@ -4,6 +4,7 @@ namespace Tests;
 
 use TomaszKr\Pesel as Pesel;
 use PHPUnit\Framework\TestCase;
+use Exception;
 
 /*
 * @codeCoverageIgnore
@@ -13,10 +14,11 @@ class PeselTest extends TestCase
     /**
      * @dataProvider invalidNumberDataProviderException
      * @param string $number
-     * @expectedException Exception
      */
     public function testException($number) : void
     {
+        $this->expectException(Exception::class);
+
         $pesel = new Pesel($number);
     }
     /**
@@ -46,7 +48,7 @@ class PeselTest extends TestCase
     }
     
     /**
-     * @dataProvider futerPesel()
+     * @dataProvider futerPesel
      * @param string $number
      */
     public function testIsValidReturnsFalseWhenNumberIsInFutere($number) : void
@@ -99,7 +101,7 @@ class PeselTest extends TestCase
         $this->assertFalse($pesel->isCorrectYear());
     }
     
-    public function invalidNumberDataProviderException() : array
+    public static function invalidNumberDataProviderException() : array
     {
         return [
             [1234],
@@ -109,7 +111,7 @@ class PeselTest extends TestCase
             
         ];
     }
-    public function invalidNumberDataProvider() : array
+    public static function invalidNumberDataProvider() : array
     {
       return [
         ['96100612532'],
@@ -120,7 +122,7 @@ class PeselTest extends TestCase
     ];
   }
     
-    public function correctPesel() : array
+    public static function correctPesel() : array
     {
         return [
             ["07241619910"],
@@ -135,7 +137,7 @@ class PeselTest extends TestCase
         ];
     }
     
-    public function futerPesel() : array
+    public static function futerPesel() : array
     {
         return [
             ["04722615764"],

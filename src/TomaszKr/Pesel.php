@@ -2,6 +2,8 @@
 
 namespace TomaszKr;
 
+use DateTime;
+
 /**
  * PESEL
  * 
@@ -13,25 +15,25 @@ final class Pesel
      * Max lenght in PESEL
      * @var integer 
      */
-    const MAX_LENGHT = 11; 
+    private const MAX_LENGHT = 11; 
     
     /**
      * WEIGHT for position in PESEL
      * @var array
      */
-    const WEIGHTS = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3, 1];
+    private const WEIGHTS = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3, 1];
     
     /**
      * Return points for set gender
      */
-    const MAN = 1;
-    const WOMAN = 0;
+    private const MAN = 1;
+    private const WOMAN = 0;
     
     /**
     * All years that maybe it used
     * @var array
     */
-    const YEAR = [
+    private const YEAR = [
                   '1900',
                   '2000',
                   '2100',
@@ -54,37 +56,26 @@ final class Pesel
     private $woman = "Woman";
     
     /**
-     * Number Pesel
-     *
-     * @var int
-     */
-    private $number;
-
-    /**
      * Minimum year
      *
-     * @var \DateTime
+     * @var DateTime
      */
     private $minYear;
 
     /**
      * Maximum year
      *
-     * @var \DateTime
+     * @var DateTime
      */
     private $maxYear;
     
-    /**
-     * Constructor
-     * 
-     * @param string $number Number "Pesel"
-     */
-    public function __construct(string $number)
-    {
-        $this->number = $number;
 
-        $this->minYear = new \DateTime('1800-01-01');
-        $this->maxYear = new \DateTime();
+    public function __construct(
+        private readonly string $number
+    )
+    {
+        $this->minYear = new DateTime('1800-01-01');
+        $this->maxYear = new DateTime();
         
         if(!$this->isCorrectLenght()){
           throw new \Exception("Incorrect lenght", 1);
@@ -151,21 +142,21 @@ final class Pesel
      */
     public function isCorrectDateNow() : bool
     {
-        return (new \DateTime()) > $this->getBirthday();
+        return (new DateTime()) > $this->getBirthday();
     }
     
     /**
      * Get birthday in correct "Pesel"
      * 
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getBirthday() : \DateTime
+    public function getBirthday() : DateTime
     {
         $year = $this->getYear();
         $month = $this->getMonth();
         $day =  $this->number[4].$this->number[5];   
         
-        return new \DateTime($year."-".$month."-".$day);
+        return new DateTime($year."-".$month."-".$day);
     }
     
     /**
@@ -272,10 +263,10 @@ final class Pesel
     /**
      * Set maximum year
      *
-     * @param \DateTime $dateTime
+     * @param DateTime $dateTime
      * @return Pesel
      */
-    public function setMaxYear(\DateTime $dateTime) : Pesel
+    public function setMaxYear(DateTime $dateTime) : Pesel
     {
         $this->maxYear = $dateTime;
         return $this;
@@ -284,10 +275,10 @@ final class Pesel
     /**
      * Set minimum year
      *
-     * @param \DateTime $dateTime
+     * @param DateTime $dateTime
      * @return Pesel
      */
-    public function setMinYear(\DateTime $dateTime) : Pesel
+    public function setMinYear(DateTime $dateTime) : Pesel
     {
         $this->minYear = $dateTime;
         return $this;
