@@ -182,9 +182,9 @@ final class Pesel
     /**
      * Get number "Pesel"
      *
-     * @return int
+     * @return string
      */
-    public function getNumber() : int
+    public function getNumber() : string
     {
         return $this->number;
     }
